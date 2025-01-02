@@ -36,7 +36,9 @@ app.post("/api/bookings", (req, res) => {
     return res.status(400).json({ message: "All fields are required." });
   }
   if (isNaN(guests) || guests <= 0) {
-    return res.status(400).json({ message: "Guests must be a positive number." });
+    return res
+      .status(400)
+      .json({ message: "Guests must be a positive number." });
   }
 
   // Check for double booking
@@ -89,6 +91,12 @@ app.delete("/api/bookings/:id", (req, res) => {
 
   bookings.splice(bookingIndex, 1);
   res.status(200).json({ message: "Booking deleted successfully." });
+});
+
+// Get server
+
+app.get("/", (req, res) => {
+  res.send("App is running");
 });
 
 // Start server
