@@ -24,7 +24,7 @@ function App() {
   };
 
   const fetchAvailableSlots = (date) => {
-    axios.get(`http://localhost:5000/api/available-slots?date=${date}`)
+    axios.get(`https://booking-backend-beta.vercel.app/api/available-slots?date=${date}`)
       .then(response => setAvailableSlots(response.data))
       .catch(error => console.error('Error fetching available slots:', error));
   };
@@ -32,7 +32,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/bookings', formData);
+      const response = await axios.post('https://booking-backend-beta.vercel.app/api/bookings', formData);
       setBookings([...bookings, response.data]);
       setSummary(response.data);
       setMessage('Booking successful!');
@@ -45,7 +45,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/bookings/${id}`);
+      await axios.delete(`https://booking-backend-beta.vercel.app/api/bookings/${id}`);
       setBookings(bookings.filter(booking => booking.id !== id));
     } catch (error) {
       setMessage('Error deleting booking.');
