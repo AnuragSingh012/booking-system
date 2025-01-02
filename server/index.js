@@ -1,7 +1,7 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const { v4: uuidv4 } = require("uuid");
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 app.use(cors());
@@ -94,7 +94,6 @@ app.delete("/api/bookings/:id", (req, res) => {
 });
 
 // Get server
-
 app.get("/", (req, res) => {
   res.send("App is running");
 });
